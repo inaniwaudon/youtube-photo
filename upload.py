@@ -67,4 +67,4 @@ now = datetime.datetime.now()
 now_str = now.strftime("%Y%m%d-%H:%M:%S")
 title = "test-" + now_str
 
-#url = youtube_uploader.upload(temp_name, title, description)
+url = youtube_uploader.upload(temp_name, title, description)
