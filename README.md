@@ -1,4 +1,4 @@
-# Youtube-Photo
+# youtube-photo
 youtube-photo - Substitute YouTube platform with a cloud for photos
 
 ## Description
