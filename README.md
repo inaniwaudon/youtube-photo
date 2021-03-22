@@ -31,8 +31,8 @@ upload.py, youtube_upload.py, download.py を配置したディレクトリ上�
 ## When uploading
 + 同ディレクトリ上のimgフォルダ内にアップロード用の画像を格納します。
 + `python upload.py` を実行します。
-+ アップロード処理が完了すると、動画ID（https://www.youtube.com/watch?v=●●● の部分）が表示されますので、忘れずにメモしてください。
++ アップロード処理が完了すると、標準出力に動画ID（https://www.youtube.com/watch?v=●●● の部分）が表示されますので、忘れずにメモしてください。
 
 ## When downloading
 + `donwload.py (動画ID)` を実行します。
-+ ダウンロードが完了すると、download-img フォルダに複合された画像ファイルが展開されます。
++ ダウンロードが完了すると、download-img フォルダに復号された画像ファイルが展開されます。
