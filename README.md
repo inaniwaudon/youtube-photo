@@ -1,26 +1,28 @@
-# youtube-photo
+# youtube-photo - Substitute YouTube platform with a cloud for photos
 
-youtube-photo - Substitute YouTube platform with a cloud for photos
+Generating a H.264 video from the specified pictures and upload to YouTube.
 
-## Description
+## Install
 
-フォルダ内に保存した写真から4K解像度のH.264動画を生成し、YouTubeにアップロードします。
+### From source
 
-また、アップロードした動画のIDから動画をダウンロードし、フレーム毎に分解することで元画像を復号することが可能です。
+```bash
+git clone --depth 1 https://github.com/inanu\iwaudon/youtube-photo
+cd youtube-photo
+pip install -e .
+```
 
-## Requirement
+### From PyPI
 
-- [googleapis/google-api-python-client](https://github.com/googleapis/google-api-python-client)
-- [googleapis/oauth2client](https://github.com/googleapis/oauth2client)
-- [ytdl-org/youtube-dl](https://github.com/ytdl-org/youtube-dl)
-- [python-pillow/Pillow](https://github.com/python-pillow/Pillow)
-- [opencv-python](https://pypi.org/project/opencv-python/)
+```bash
+pip install youtube-photo
+```
 
 ## Usage
 
-upload.py, youtube_upload.py, download.py を配置したディレクトリ上に client_secrets.json を作成し、YouTube Data API に関して記述します。
+First, cleate `client_secrets.json` and write credential information of YouTube Data API like this:
 
-```json:client_secrets.json
+```json
 {
   "web": {
     "client_id": client_id,
@@ -32,13 +34,22 @@ upload.py, youtube_upload.py, download.py を配置したディレクトリ上�
 }
 ```
 
-## When uploading
+### When uploading
 
-同ディレクトリ上のimgフォルダ内にアップロード用の画像を格納します。
-`python upload.py` を実行します。
-アップロード処理が完了すると、標準出力に動画ID（`https://www.youtube.com/watch?v=***` の`***`）が表示されますので、忘れずにメモしてください。
+1. Store images for upload in `img` folder in the same directory
+2. Execute `ytp up`
+3. After finishing the upload, Video URL (`https://www.youtube.com/watch?v=***`) will be printed
+4. Keep its ID
 
-## When downloading
+### When downloading
 
-`donwload.py (動画ID)` を実行します。
-ダウンロードが完了すると、download-img フォルダに復号された画像ファイルが展開されます。
+1. Execute `ytp dl <Video ID>`
+2. After finishing the download, The decrypted image files will be extracted to the `download-img` folder
+
+## License
+
+???
+
+## Article
+
+- [容量無制限のYouTubeに写真を保存してGoogleフォト代わりに使うソフトを作ったよ！！](https://soudakyoto-ikou.hatenadiary.jp/entry/20210322/1616418041) (in Japanese)
