@@ -46,6 +46,40 @@ First, cleate `client_secrets.json` and write credential information of YouTube 
 1. Execute `ytp dl <Video ID>`
 2. After finishing the download, The decrypted image files will be extracted to the `download-img` folder
 
+## CLI Help
+
+```shellsession
+$ ytp -h
+usage: ytp [-h] [-V] {upload,up,download,dl} ...
+
+Generating a H.264 video from the specified pictures and upload to YouTube.
+
+positional arguments:
+  {upload,up,download,dl}
+    upload (up)            upload images
+    download (dl)          download images
+
+optional arguments:
+  -h, --help               show this help message and exit
+  -V, --version            show program's version number and exit
+$ ytp up -h
+usage: ytp upload [-h] [-d DIR] [-a JSON]
+
+optional arguments:
+  -h, --help                 show this help message and exit
+  -d DIR, --img_dir DIR      upload dir (default: img)
+  -a JSON, --auth_path JSON  credencial path (default: client_secrets.json)
+$ ytp dl -h
+usage: ytp download [-h] [-d DIR] ID
+
+positional arguments:
+  ID                     target youtube video id
+
+optional arguments:
+  -h, --help             show this help message and exit
+  -d DIR, --img_dir DIR  dir contains pictures (default: download-img)
+```
+
 ## License
 
 ???
