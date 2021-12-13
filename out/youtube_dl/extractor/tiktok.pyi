@@ -1,0 +1,9 @@
+from ..utils import ExtractorError as ExtractorError, compat_str as compat_str, float_or_none as float_or_none, int_or_none as int_or_none, str_or_none as str_or_none, try_get as try_get, url_or_none as url_or_none
+from .common import InfoExtractor as InfoExtractor
+
+class TikTokBaseIE(InfoExtractor): ...
+class TikTokIE(TikTokBaseIE): ...
+
+class TikTokUserIE(TikTokBaseIE):
+    @classmethod
+    def suitable(cls, url): ...

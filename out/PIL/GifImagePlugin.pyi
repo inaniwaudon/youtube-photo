@@ -1,0 +1,29 @@
+from . import (
+    Image as Image,
+    ImageChops as ImageChops,
+    ImageFile as ImageFile,
+    ImagePalette as ImagePalette,
+    ImageSequence as ImageSequence,
+)
+from ._binary import o8 as o8
+from typing import Any
+
+class GifImageFile(ImageFile.ImageFile):
+    format: str
+    format_description: str
+    global_palette: Any
+    def data(self): ...
+    @property
+    def n_frames(self): ...
+    @property
+    def is_animated(self): ...
+    im: Any
+    def seek(self, frame) -> None: ...
+    def load_prepare(self) -> None: ...
+    def tell(self): ...
+
+RAWMODE: Any
+
+def get_interlace(im): ...
+def getheader(im, palette: Any | None = ..., info: Any | None = ...): ...
+def getdata(im, offset=..., **params): ...

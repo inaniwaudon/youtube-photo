@@ -1,0 +1,3 @@
+from .common import InfoExtractor as InfoExtractor
+
+class CloudflareStreamIE(InfoExtractor): ...

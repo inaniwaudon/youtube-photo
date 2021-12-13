@@ -1,0 +1,3 @@
+from .onet import OnetBaseIE as OnetBaseIE
+
+class VODPlIE(OnetBaseIE): ...

@@ -1,0 +1,3 @@
+from typing import Any
+
+def tkinit(*args, **kwargs) -> Any: ...

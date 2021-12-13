@@ -1,0 +1,19 @@
+from ..compat import compat_HTTPError as compat_HTTPError, compat_str as compat_str, compat_urllib_request as compat_urllib_request
+from ..utils import ExtractorError as ExtractorError, NO_DEFAULT as NO_DEFAULT, determine_ext as determine_ext, int_or_none as int_or_none, merge_dicts as merge_dicts, orderedSet as orderedSet, remove_quotes as remove_quotes, str_to_int as str_to_int, update_url_query as update_url_query, url_or_none as url_or_none, urlencode_postdata as urlencode_postdata
+from .common import InfoExtractor as InfoExtractor
+from .openload import PhantomJSwrapper as PhantomJSwrapper
+
+class PornHubBaseIE(InfoExtractor): ...
+
+class PornHubIE(PornHubBaseIE):
+    IE_DESC: str
+
+class PornHubPlaylistBaseIE(PornHubBaseIE): ...
+class PornHubUserIE(PornHubPlaylistBaseIE): ...
+class PornHubPagedPlaylistBaseIE(PornHubPlaylistBaseIE): ...
+
+class PornHubPagedVideoListIE(PornHubPagedPlaylistBaseIE):
+    @classmethod
+    def suitable(cls, url): ...
+
+class PornHubUserVideosUploadIE(PornHubPagedPlaylistBaseIE): ...

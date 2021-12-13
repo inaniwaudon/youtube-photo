@@ -1,0 +1,3 @@
+from .hbo import HBOBaseIE as HBOBaseIE
+
+class CinemaxIE(HBOBaseIE): ...

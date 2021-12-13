@@ -1,0 +1,6 @@
+from ..compat import compat_urllib_parse_unquote as compat_urllib_parse_unquote, compat_urllib_parse_urlparse as compat_urllib_parse_urlparse
+from ..utils import ExtractorError as ExtractorError, USER_AGENTS as USER_AGENTS, float_or_none as float_or_none, sanitized_Request as sanitized_Request, unescapeHTML as unescapeHTML, update_url_query as update_url_query, urlencode_postdata as urlencode_postdata
+from .common import InfoExtractor as InfoExtractor
+
+class CeskaTelevizeIE(InfoExtractor): ...
+class CeskaTelevizePoradyIE(InfoExtractor): ...

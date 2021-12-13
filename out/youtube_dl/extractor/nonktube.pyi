@@ -1,0 +1,3 @@
+from .nuevo import NuevoBaseIE as NuevoBaseIE
+
+class NonkTubeIE(NuevoBaseIE): ...

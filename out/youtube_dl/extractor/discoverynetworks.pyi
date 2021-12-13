@@ -1,0 +1,3 @@
+from .dplay import DPlayIE as DPlayIE
+
+class DiscoveryNetworksDeIE(DPlayIE): ...

@@ -1,0 +1,9 @@
+from ..utils import PostProcessingError as PostProcessingError, check_executable as check_executable, encodeArgument as encodeArgument, encodeFilename as encodeFilename, prepend_extension as prepend_extension, replace_extension as replace_extension, shell_quote as shell_quote
+from .ffmpeg import FFmpegPostProcessor as FFmpegPostProcessor
+from typing import Any
+
+class EmbedThumbnailPPError(PostProcessingError): ...
+
+class EmbedThumbnailPP(FFmpegPostProcessor):
+    def __init__(self, downloader: Any | None = ..., already_have_thumbnail: bool = ...) -> None: ...
+    def run(self, info): ...
