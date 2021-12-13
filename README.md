@@ -1,12 +1,15 @@
 # youtube-photo
+
 youtube-photo - Substitute YouTube platform with a cloud for photos
 
 ## Description
+
 フォルダ内に保存した写真から4K解像度のH.264動画を生成し、YouTubeにアップロードします。
 
 また、アップロードした動画のIDから動画をダウンロードし、フレーム毎に分解することで元画像を復号することが可能です。
 
 ## Requirement
+
 - [googleapis/google-api-python-client](https://github.com/googleapis/google-api-python-client)
 - [googleapis/oauth2client](https://github.com/googleapis/oauth2client)
 - [ytdl-org/youtube-dl](https://github.com/ytdl-org/youtube-dl)
@@ -14,6 +17,7 @@ youtube-photo - Substitute YouTube platform with a cloud for photos
 - [opencv-python](https://pypi.org/project/opencv-python/)
 
 ## Usage
+
 upload.py, youtube_upload.py, download.py を配置したディレクトリ上に client_secrets.json を作成し、YouTube Data API に関して記述します。
 
 ```json:client_secrets.json
@@ -29,10 +33,12 @@ upload.py, youtube_upload.py, download.py を配置したディレクトリ上�
 ```
 
 ## When uploading
-+ 同ディレクトリ上のimgフォルダ内にアップロード用の画像を格納します。
-+ `python upload.py` を実行します。
-+ アップロード処理が完了すると、標準出力に動画ID（https://www.youtube.com/watch?v=●●● の部分）が表示されますので、忘れずにメモしてください。
+
+同ディレクトリ上のimgフォルダ内にアップロード用の画像を格納します。
+`python upload.py` を実行します。
+アップロード処理が完了すると、標準出力に動画ID（`https://www.youtube.com/watch?v=***` の`***`）が表示されますので、忘れずにメモしてください。
 
 ## When downloading
-+ `donwload.py (動画ID)` を実行します。
-+ ダウンロードが完了すると、download-img フォルダに復号された画像ファイルが展開されます。
+
+`donwload.py (動画ID)` を実行します。
+ダウンロードが完了すると、download-img フォルダに復号された画像ファイルが展開されます。
