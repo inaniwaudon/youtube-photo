@@ -2,12 +2,12 @@
 
 [日本語版READMEはこちら](README.ja.md)
 
-- Substitute YouTube platform with a cloud for photos
-- Generating a H.264 video from the specified pictures and upload to YouTube
+- YouTubeのプラットフォームを写真用クラウドの代わりにする
+- 指定した写真からH.264動画を生成し、YouTubeにアップロードする
 
-## Install
+## インストール
 
-### From source
+### ソースから
 
 ```bash
 git clone --depth 1 https://github.com/inanu\iwaudon/youtube-photo
@@ -15,15 +15,15 @@ cd youtube-photo
 pip install -e .
 ```
 
-### From PyPI
+### PyPIから
 
 ```bash
 pip install youtube-photo
 ```
 
-## Usage
+## 使用方法
 
-First, cleate `client_secrets.json` and write credential information of YouTube Data API like this:
+まず`client_secrets.json`を作成し、YouTube Data APIの認証情報を以下のように記述します。
 
 ```json
 {
@@ -37,19 +37,19 @@ First, cleate `client_secrets.json` and write credential information of YouTube 
 }
 ```
 
-### When uploading
+### アップロード
 
-1. Store images for upload in `img` folder in the same directory
-2. Execute `ytp up`
-3. After finishing the upload, Video URL (`https://www.youtube.com/watch?v=***`) will be printed
-4. Keep its ID
+1. アップロード用の画像は、同じディレクトリ内の `img` フォルダに格納
+2. `ytp up`を実行
+3. アップロード終了後、動画ID(`https://www.youtube.com/watch?v=***`)が表示される
+4. 表示されたIDを覚えておく
 
-### When downloading
+### ダウンロード
 
-1. Execute `ytp dl <Video ID>`
-2. After finishing the download, The decrypted image files will be extracted to the `download-img` folder
+1. `ytp dl <Video ID>`を実行
+2. ダウンロード終了後、復号化された画像ファイルが解凍され `download-img` フォルダに保存される
 
-## CLI Help
+## コマンドラインヘルプ
 
 ```shellsession
 $ ytp -h
@@ -83,10 +83,10 @@ optional arguments:
   -d DIR, --img_dir DIR  dir contains pictures (default: download-img)
 ```
 
-## License
+## ライセンス
 
 ???
 
-## Article
+## 解説記事
 
 - [容量無制限のYouTubeに写真を保存してGoogleフォト代わりに使うソフトを作ったよ！！](https://soudakyoto-ikou.hatenadiary.jp/entry/20210322/1616418041) (in Japanese)
