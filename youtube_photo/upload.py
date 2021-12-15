@@ -1,10 +1,11 @@
 import datetime
 import glob
 import os
+from typing import List, Tuple
 
-import cv2
-import numpy as np
-from PIL import Image
+import cv2  # type: ignore
+import numpy as np  # type: ignore
+from PIL import Image  # type: ignore
 
 from .youtube_uploader import YTUploader
 
@@ -12,15 +13,15 @@ from .youtube_uploader import YTUploader
 class Uploader:
     TEMP_NAME = "temp.mp4"
 
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
-    def upload(self, img_dir, auth_path):
-        description = self.img_to_video(img_dir, auth_path)
+    def upload(self, img_dir: str, auth_path: str) -> str:
+        description = self.img_to_video(img_dir)
         url = YTUploader(auth_path).upload(self.TEMP_NAME, title, description)
         return url
 
-    def get_images(self, img_dir):
+    def get_images(self, img_dir: str) -> List[str]:
         filenames = glob.glob(os.path.join(img_dir, "*"))
         return [
             f
@@ -30,13 +31,12 @@ class Uploader:
 
     def img_to_video(
         self,
-        img_dir,
-        auth_path,
-        fps=24.0,
-        img_size=(4096, 2160),
-        orientation_exif_key=274,
-        transpose_no=[0, 3, 1, 5, 4, 6, 2],
-    ):
+        img_dir: str,
+        fps: float = 24.0,
+        img_size: Tuple[int, int] = (4096, 2160),
+        orientation_exif_key: int = 274,
+        transpose_no: List[int] = [0, 3, 1, 5, 4, 6, 2],
+    ) -> str:
         width, height = img_size
         codec = cv2.VideoWriter_fourcc(*"avc1")
         video = cv2.VideoWriter(self.TEMP_NAME, codec, fps, img_size)
@@ -47,7 +47,7 @@ class Uploader:
             # get the EXIF and transpose
             exif = img._getexif()
             if orientation_exif_key in exif:
-                orientation = exif[orientation_exif_key]
+                orientation: int = exif[orientation_exif_key]
                 if orientation > 1:
                     img = img.transpose(transpose_no[orientation - 2])
 

@@ -1,11 +1,13 @@
 """https://github.com/youtube/api-samples/blob/master/python/upload_video.py"""
 
+import argparse
 import http.client
 import random
 import sys
 import time
+from typing import Any
 
-import httplib2
+import httplib2  # type: ignore
 from apiclient.discovery import build  # type: ignore
 from apiclient.errors import HttpError  # type: ignore
 from apiclient.http import MediaFileUpload  # type: ignore
@@ -46,10 +48,10 @@ class YTUploader:
     YOUTUBE_API_SERVICE_NAME = "youtube"
     YOUTUBE_API_VERSION = "v3"
 
-    def __init__(self, auth_path="client_secrets.json"):
+    def __init__(self, auth_path: str = "client_secrets.json") -> None:
         self.CLIENT_SECRETS_FILE = auth_path
 
-    def get_authenticated_service(self, args):
+    def get_authenticated_service(self, args: argparse.Namespace) -> Any:
         flow = flow_from_clientsecrets(
             self.CLIENT_SECRETS_FILE,
             scope=self.YOUTUBE_UPLOAD_SCOPE,
@@ -68,7 +70,7 @@ class YTUploader:
             http=credentials.authorize(httplib2.Http()),
         )
 
-    def initialize_upload(self, youtube, options):
+    def initialize_upload(self, youtube: Any, options: argparse.Namespace) -> str:
         body = {
             "snippet": {
                 "title": options.title,
@@ -79,7 +81,7 @@ class YTUploader:
             "status": {"privacyStatus": options.privacyStatus},
         }
 
-        insert_request = youtube.videos().insert(
+        insert_request: Any = youtube.videos().insert(
             part=",".join(body.keys()),
             body=body,
             media_body=MediaFileUpload(options.file, chunksize=-1, resumable=True),
@@ -87,7 +89,7 @@ class YTUploader:
 
         return self.resumable_upload(insert_request)
 
-    def resumable_upload(self, insert_request):
+    def resumable_upload(self, insert_request: Any) -> str:
         response = None
         error = None
         retry = 0
@@ -112,7 +114,7 @@ class YTUploader:
                         e.content,
                     )
                 else:
-                    raise
+                    raise e
             except self.RETRIABLE_EXCEPTIONS as e:
                 error = "A retriable error occurred: %s" % e
             if error is not None:
@@ -128,7 +130,7 @@ class YTUploader:
         # succeeded
         return response["id"]
 
-    def upload(self, file, title, description):
+    def upload(self, file: str, title: str, description: str) -> str:
         argparser.add_argument("--file", default=file)
         argparser.add_argument("--title", default=title)
         argparser.add_argument("--description", default=description)
@@ -136,9 +138,11 @@ class YTUploader:
         argparser.add_argument("--privacyStatus", default="unlisted")
         args = argparser.parse_args()
 
-        youtube = self.get_authenticated_service(args)
+        youtube: Any = self.get_authenticated_service(args)
 
         try:
             return self.initialize_upload(youtube, args)
         except HttpError as e:
-            print("An HTTP error %d occurred:\n%s" % (e.resp.status, e.content))
+            raise ConnectionError(
+                "An HTTP error %d occurred: %s" % (e.resp.status, e.content)
+            )
