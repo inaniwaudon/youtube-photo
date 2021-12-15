@@ -1,3 +1,0 @@
-from .nuevo import NuevoBaseIE as NuevoBaseIE
-
-class LoveHomePornIE(NuevoBaseIE): ...

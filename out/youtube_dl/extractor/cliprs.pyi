@@ -1,3 +1,0 @@
-from .onet import OnetBaseIE as OnetBaseIE
-
-class ClipRsIE(OnetBaseIE): ...

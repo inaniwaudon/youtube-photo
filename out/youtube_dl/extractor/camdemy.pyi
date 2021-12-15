@@ -1,6 +1,0 @@
-from ..compat import compat_urllib_parse_urlencode as compat_urllib_parse_urlencode, compat_urlparse as compat_urlparse
-from ..utils import clean_html as clean_html, parse_duration as parse_duration, str_to_int as str_to_int, unified_strdate as unified_strdate
-from .common import InfoExtractor as InfoExtractor
-
-class CamdemyIE(InfoExtractor): ...
-class CamdemyFolderIE(InfoExtractor): ...

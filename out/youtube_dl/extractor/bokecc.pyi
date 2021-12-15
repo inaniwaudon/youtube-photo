@@ -1,6 +1,0 @@
-from ..compat import compat_parse_qs as compat_parse_qs
-from ..utils import ExtractorError as ExtractorError
-from .common import InfoExtractor as InfoExtractor
-
-class BokeCCBaseIE(InfoExtractor): ...
-class BokeCCIE(BokeCCBaseIE): ...
